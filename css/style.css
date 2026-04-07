@@ -1,0 +1,740 @@
+/* Tejas' Tech Journey — layout from desktop + mobile homepage wireframes */
+
+:root {
+  --color-text: #1a1a1a;
+  --color-text-muted: #555;
+  --color-border: #222;
+  --color-bg: #fff;
+  --color-bg-subtle: #f4f4f4;
+  --color-placeholder: #ddd;
+  --color-muted-border: #ccc;
+  --shadow-popup: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --space-page: clamp(1rem, 4vw, 2rem);
+  --space-section: clamp(1.5rem, 5vw, 3rem);
+  --max-content: 72rem;
+}
+
+/*
+ * Dark theme — URL fragment #darkmode (see hidden #darkmode anchor in <body>).
+ * Stays on across pages because light vs dark nav/footer use different hrefs (no JS).
+ */
+body:has(#darkmode:target) {
+  --color-text: #f0f0f0;
+  --color-text-muted: #a8a8a8;
+  --color-border: #d0d0d0;
+  --color-bg: #141414;
+  --color-bg-subtle: #1f1f1f;
+  --color-placeholder: #3d3d3d;
+  --color-muted-border: #4a4a4a;
+  --shadow-popup: 0 6px 20px rgba(0, 0, 0, 0.55);
+}
+
+/* Target anchor at top of page (no layout jump) */
+#darkmode {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  pointer-events: none;
+  scroll-margin-top: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+main {
+  flex: 1;
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* ----- Header / navigation (wireframe: title + Home | PC Basics | …) ----- */
+
+body > header {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  padding: var(--space-page);
+  border-bottom: 2px solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.site-title {
+  margin: 0;
+}
+
+.site-title h1 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+/* Site title: two links (enable / disable #darkmode); only one shown at a time */
+.site-title h1 a.site-title-label {
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+}
+
+.site-title-to-light {
+  display: none;
+}
+
+body:has(#darkmode:target) .site-title-to-dark {
+  display: none;
+}
+
+body:has(#darkmode:target) .site-title-to-light {
+  display: inline;
+}
+
+.site-title-label:focus-visible {
+  outline: 2px solid var(--color-border);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+body > header .main-nav-light,
+body > header .main-nav-dark {
+  margin: 0;
+}
+
+.main-nav-dark {
+  display: none;
+}
+
+/* Visually hidden checkboxes (nav menu, social popover) — no JS */
+.nav-toggle,
+.footer-social-toggle {
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ----- Footer: light vs dark link sets -----
+ * Must beat later `.footer-links { display: flex }` (same single-class specificity).
+ */
+.site-footer .footer-links-dark {
+  display: none;
+}
+
+body:has(#darkmode:target) .site-footer .footer-links-light {
+  display: none;
+}
+
+body:has(#darkmode:target) .site-footer .footer-links-dark {
+  display: flex;
+}
+
+/* ----- Home hero: Read More preserves #darkmode ----- */
+
+.hero-read-dark {
+  display: none;
+}
+
+body:has(#darkmode:target) .hero-read-light {
+  display: none;
+}
+
+body:has(#darkmode:target) .hero-read-dark {
+  display: inline-block;
+}
+
+.header-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+
+/* Burger control — visible only on small screens (see mobile query) */
+.menu-toggle {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  margin: 0;
+  padding: 0.35rem;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text);
+}
+
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--color-border);
+  outline-offset: 2px;
+}
+
+/* Three-line burger icon */
+.burger-icon {
+  display: block;
+  width: 1.375rem;
+  height: 2px;
+  background-color: var(--color-border);
+  box-shadow: 0 6px 0 var(--color-border), 0 12px 0 var(--color-border);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+.nav-links a {
+  display: inline-block;
+  padding: 0.35rem 0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.nav-links a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.25em;
+  cursor: default;
+}
+
+.nav-links a[aria-current="page"]:hover {
+  text-decoration-thickness: 3px;
+}
+
+/* Pipe separators between nav items (desktop-style) */
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li + li::before {
+  content: "|";
+  padding: 0 0.65rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  text-decoration: none;
+  pointer-events: none;
+}
+
+/* ----- Hero (desktop: text + image row; mobile: image first, then intro) ----- */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1.5rem;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: var(--space-section) var(--space-page);
+}
+
+.hero-text h2 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.hero-text p {
+  margin: 0;
+  max-width: 38rem;
+  color: var(--color-text);
+}
+
+.hero-text .button {
+  margin-top: 1.25rem;
+}
+
+.hero-image {
+  margin: 0;
+}
+
+.hero-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background-color: var(--color-placeholder);
+  border: 2px solid var(--color-border);
+}
+
+/* Mobile wireframe: featured image above welcome / Read More */
+.hero-image {
+  order: -1;
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .hero-text,
+  .hero-image {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hero-image {
+    order: 0;
+  }
+}
+
+/* CTA — wireframe [ Read More ] */
+.button {
+  display: inline-block;
+  padding: 0.65rem 1.35rem;
+  border: 2px solid var(--color-border);
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.button:hover {
+  background-color: var(--color-border);
+  color: var(--color-bg);
+  text-decoration: none;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-border);
+  outline-offset: 2px;
+}
+
+/* ----- Featured sections — three columns desktop, stacked mobile ----- */
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 0 var(--space-page) var(--space-section);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg-subtle);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background-color: var(--color-placeholder);
+  border: 1px solid var(--color-muted-border);
+}
+
+.card-image-credit {
+  margin: -0.35rem 0 0;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  color: var(--color-text-muted);
+  opacity: 0.9;
+}
+
+.card-image-credit a {
+  color: inherit;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.card p {
+  margin: 0;
+  flex: 1;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+@media (min-width: 48rem) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+}
+
+/* ----- Inner pages ----- */
+
+.page-content {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: var(--space-section) var(--space-page);
+}
+
+.page-content h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+}
+
+.page-content h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.page-content p {
+  margin: 0 0 1rem;
+}
+
+.page-content img {
+  display: block;
+  margin: 1rem 0 1.25rem;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-placeholder);
+}
+
+.page-content img.about-photo {
+  max-width: 15rem;
+  width: 100%;
+  margin: 1rem auto 1.25rem;
+}
+
+.page-content .about-list {
+  margin: 0 0 1rem;
+  padding-left: 1.35rem;
+  list-style: disc;
+}
+
+.page-content .about-list li {
+  margin-bottom: 0.5rem;
+}
+
+.page-content .about-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* ----- Footer — © line + About | Social links (hover / checkbox popover) ----- */
+
+.site-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: var(--space-page);
+  margin-top: auto;
+  border-top: 2px solid var(--color-border);
+  background-color: var(--color-bg-subtle);
+}
+
+.footer-copy {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.draft-placeholder {
+  margin: 0;
+  padding: 0.5rem var(--space-page) 1rem;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.site-footer .footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+.footer-links a {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-links li {
+  display: flex;
+  align-items: center;
+}
+
+.footer-links li + li::before {
+  content: "|";
+  padding: 0 0.65rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.footer-social {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.footer-social-trigger {
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.footer-social-trigger:hover,
+.footer-social-trigger:focus-visible {
+  text-decoration: underline;
+}
+
+.footer-social-popup {
+  position: absolute;
+  /* Slight overlap with the trigger row so the pointer never hits a “dead” gap */
+  bottom: calc(100% - 6px);
+  right: 0;
+  left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-popup);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: opacity 0.15s ease, visibility 0.15s ease, transform 0.15s ease;
+  z-index: 20;
+}
+
+.footer-social:hover .footer-social-popup,
+.footer-social:focus-within .footer-social-popup,
+.footer-social:has(.footer-social-toggle:checked) .footer-social-popup {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.footer-social:has(.footer-social-toggle:checked) .footer-social-trigger {
+  text-decoration: underline;
+}
+
+.footer-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem;
+  border-radius: 4px;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background-color 0.12s ease, color 0.12s ease;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  background-color: var(--color-bg-subtle);
+  text-decoration: none;
+}
+
+.footer-social-icon {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media (max-width: 47.99rem) {
+  .footer-social-popup {
+    right: auto;
+    left: 0;
+  }
+}
+
+/* ----- Mobile: title row + burger right; nav panel toggles open ----- */
+
+@media (max-width: 47.99rem) {
+  body > header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-top {
+    width: 100%;
+    flex: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .site-title {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .main-nav-light,
+  .main-nav-dark {
+    display: none;
+    width: 100%;
+    padding-top: 1rem;
+    margin-top: 0.75rem;
+    border-top: 1px solid var(--color-muted-border);
+  }
+
+  #nav-toggle:checked ~ .main-nav-light {
+    display: block;
+  }
+
+  #nav-toggle:checked ~ .main-nav-dark {
+    display: none;
+  }
+
+  body:has(#darkmode:target) #nav-toggle:checked ~ .main-nav-light {
+    display: none;
+  }
+
+  body:has(#darkmode:target) #nav-toggle:checked ~ .main-nav-dark {
+    display: block;
+  }
+
+  /* Optional: “close” hint when open (label still toggles) */
+  #nav-toggle:checked ~ .header-top .menu-toggle {
+    border-color: var(--color-border);
+    background-color: var(--color-bg-subtle);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li + li::before {
+    display: none;
+  }
+
+  .nav-links a {
+    padding: 0.4rem 0;
+  }
+}
+
+@media (min-width: 48rem) {
+  .site-footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .main-nav-light {
+    display: block !important;
+  }
+
+  .main-nav-dark {
+    display: none !important;
+  }
+
+  body:has(#darkmode:target) .main-nav-light {
+    display: none !important;
+  }
+
+  body:has(#darkmode:target) .main-nav-dark {
+    display: block !important;
+  }
+}
