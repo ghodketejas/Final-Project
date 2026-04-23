@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tejas' Tech Journey</title>
+  <title>PC Basics — Tejas' Tech Journey</title>
+  <meta name="description" content="Beginner-friendly guide to what each PC part does—CPU, GPU, RAM, storage, power supply, and more.">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -42,27 +43,358 @@
 
   <main>
     <section class="page-content">
-      <h2>PC Basics</h2>
+      <h2>PC Basics (the stuff I wish someone explained to me first)</h2>
       <p>
-        This page explains the basic parts of a computer, including the CPU, GPU, RAM,
-        motherboard, and storage. When I first started learning about PCs, these terms
-        felt confusing, so I want to explain them in a simple way.
+        Okay so—I am <em>not</em> a professional builder or a reviewer with a lab. I am just someone who
+        got curious, watched a lot of videos, poked around on build sites, and slowly figured out what
+        all the boxes at the store actually <em>mean</em>. This page is me talking to “past me”:
+        a total beginner who only knew the computer turned on and sometimes made game go brrr.
       </p>
-  
-      <img src="images/parts-of-gaming-pc.webp" alt="PC parts overview">
-  
-      <h3>CPU</h3>
-      <p>The CPU is like the brain of the computer. It handles instructions and processing tasks.</p>
-  
-      <h3>GPU</h3>
-      <p>The GPU is important for graphics, gaming, and other visually heavy tasks.</p>
-  
-      <h3>RAM</h3>
-      <p>RAM helps your computer handle multiple tasks at once and improves overall responsiveness.</p>
+      <p>
+        A PC is basically a team of parts that have to <strong>agree with each other</strong>. If one
+        part is the wrong shape, uses the wrong kind of memory, or needs more power than your supply
+        can give, things get annoying fast. So you do not have to memorize model numbers on day one—
+        you just have to know what each <em>type</em> of part is responsible for, and what questions
+        to ask when you pick one.
+      </p>
+
+      <h3>Websites and places that actually helped me</h3>
+      <p>
+        I spent a <em>lot</em> of time on these. Yours might be different, but this is my honest list.
+        (Anything that opens in a new tab is so you do not lose this page by accident.)
+      </p>
+      <ul class="pc-sites">
+        <li>
+          <a href="https://pcpartpicker.com/" target="_blank" rel="noopener noreferrer">PCPartPicker</a> —
+          This was my home base. You pick parts, it flags a bunch of compatibility problems for you, you can
+          peek at other people’s builds, and the price list is at least a rough reality check. I used it
+          to learn <em>what even exists</em> before I bought anything.
+        </li>
+        <li>
+          <a href="https://www.logicalincrements.com/" target="_blank" rel="noopener noreferrer">Logical Increments</a> —
+          Super simple “if your budget is around <em>this</em>, you are roughly in <em>this</em> tier” energy.
+          It is not the law, but it helped me stop feeling lost in the ocean of part numbers.
+        </li>
+        <li>
+          <a href="https://www.reddit.com/r/buildapc/" target="_blank" rel="noopener noreferrer">r/buildapc on Reddit</a> —
+          People post full parts lists and get feedback. I lurked, read the comments where someone said
+          “that PSU is fine” or “you might want more RAM for that,” and it slowly made sense. Don’t be
+          scared to use the search bar—99% of beginner questions were asked before.
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@LinusTechTips" target="_blank" rel="noopener noreferrer">Linus Tech Tips (YouTube)</a> —
+          I learned a lot from their build guides and “how does this work” style videos. Not the only
+          channel out there, but a decent rabbit hole.
+        </li>
+        <li>
+          <a href="https://www.cpubenchmark.net/" target="_blank" rel="noopener noreferrer">CPU benchmark list (PassMark)</a> —
+          When two CPUs looked identical to me, I used this to get a <em>very rough</em> idea of
+          which one is stronger. It is not perfect real-world testing, but it is a start.
+        </li>
+        <li>
+          <a href="https://www.techpowerup.com/gpu-specs/" target="_blank" rel="noopener noreferrer">TechPowerUp GPU database</a> —
+          Helpful for checking card length, power plug situation, and basic specs when I was shopping for a graphics card.
+        </li>
+      </ul>
+
+      <h3>Big-picture: what happens when you press the power button</h3>
+      <p>
+        Super short version: the <strong>PSU</strong> feeds power everywhere. The <strong>motherboard</strong> is
+        the table everyone sits at. The <strong>CPU</strong> does a ton of the thinking and “do math now” work.
+        <strong>RAM</strong> holds the stuff the CPU needs <em>right this second</em>. <strong>Storage</strong> holds
+        your files and games for the long term (slower to grab than RAM, but it does not forget when you turn off).
+        The <strong>GPU</strong> is extra muscle for 3D graphics and a lot of game-type workloads. The <strong>case</strong>
+        holds it all, and <strong>fans / cooling</strong> stop everything from cooking itself. That is the team.
+      </p>
+      <p>
+        The diagram below is a <strong>labeled gaming PC</strong>—a quick map of what lives where
+        before we zoom in on each part. (Your own case might look a little different, but the ideas are
+        the same.)
+      </p>
+      <figure>
+        <img src="images/parts-of-gaming-pc.webp" class="pc-overview-image" alt="Gaming PC cutaway with parts labeled, including the motherboard, CPU, RAM, graphics card, power supply, storage drives, case fans, and other components.">
+        <p class="card-image-credit">Image from <a href="https://alexdavispcs.co.uk/blogs/news/gaming-pc-components-explained" target="_blank" rel="noopener noreferrer">Alex Davis PCs — Gaming PC components explained</a>.</p>
+      </figure>
+
+      <nav class="pc-toc" aria-label="On this page">
+        <p>Skip to a part:</p>
+        <ol>
+          <li><a href="#cpu">CPU (processor)</a></li>
+          <li><a href="#motherboard">Motherboard</a></li>
+          <li><a href="#ram">RAM (memory)</a></li>
+          <li><a href="#storage">Storage (SSD / HDD)</a></li>
+          <li><a href="#gpu">GPU (graphics card)</a></li>
+          <li><a href="#psu">PSU (power supply)</a></li>
+          <li><a href="#case">Case</a></li>
+          <li><a href="#cooling">Cooling and fans</a></li>
+          <li><a href="#extras">Small extras worth knowing</a></li>
+        </ol>
+      </nav>
+
+      <section class="pc-section" id="cpu">
+        <h3>CPU (processor)</h3>
+        <p>
+          People call it the “brain” of the PC, which is cheesy but it works. It runs the operating system and
+          does most of the general crunching. For gaming, a mid-range CPU is often <em>enough</em> if your
+          graphics card is the real heavy lifter; for stuff like video editing, streaming while gaming, or heavy
+          multitasking, a stronger CPU with more cores can matter more.
+        </p>
+        <p>
+          <strong>Brand-wise</strong> you have mainly Intel and AMD right now. I am not here to start a war—
+          both can be fine. What mattered to me in practice: <strong>the CPU socket and chipset have to
+          match the motherboard you buy</strong> (so you are not shoving the wrong “shape” into the board).
+        </p>
+        <h4>Words you will see a lot</h4>
+        <ul class="pc-inline-list">
+          <li><strong>Cores / threads</strong> — Think “how many things can this thing juggle at once?” More is not
+            always automatically better for every person, but it helps for heavy workloads.</li>
+          <li><strong>Clock speed (GHz)</strong> — How fast it ticks through work, roughly. Not the only thing that
+            matters, so do not get hypnotized by one big number.</li>
+        </ul>
+        <p>
+          You usually need <strong>thermal paste</strong> between the CPU and the cooler (sometimes it is pre-applied
+          on a stock cooler, sometimes you add a tiny bit yourself). The CPU also sits in a <strong>socket</strong> on
+          the motherboard—there is a correct way to line up the little triangle, and you should never <em>shove</em> it.
+        </p>
+        <figure class="img-placeholder" role="img" aria-label="Image placeholder: CPU and cooler">
+          <p><strong>Image placeholder</strong> — e.g. CPU in the socket, or stock cooler, or a close-up of the triangle
+            mark you line up with.</p>
+        </figure>
+        <p class="pc-tip"><strong>Tip:</strong> When you are new, write down the exact CPU model you bought and
+          double-check the motherboard’s “CPU support” list on the manufacturer’s site. “This board <em>usually</em>
+          works with this family” is not the same as “<em>my</em> specific chip works out of the box.” I learned
+          that the slightly annoying way.</p>
+      </section>
+
+      <section class="pc-section" id="motherboard">
+        <h3>Motherboard</h3>
+        <p>
+          Everything else plugs into this. It is not just a dumb slab of plastic—it has the chipset that controls
+          what the PC can do (how many fast USB ports, how many drives, that kind of thing). I used to think
+          “a motherboard is a motherboard” but the size and the ports actually matter a lot.
+        </p>
+        <h4>Size (form factor)</h4>
+        <p>
+          Common names: <strong>ATX</strong> (bigger, more room for slots), <strong>Micro-ATX</strong> (smaller, still
+          pretty common), <strong>ITX</strong> (tiny builds—cute, but you fight for space). Your case has to match
+          the size you pick. PCPartPicker helps with that kind of “oops these don’t fit” moment.
+        </p>
+        <h4>What I checked before I bought</h4>
+        <ul class="pc-inline-list">
+          <li>CPU socket type matches my processor.</li>
+          <li>Enough RAM slots for what I want (if I only buy two sticks now, can I add two more later?).</li>
+          <li>How many <strong>M.2</strong> slots for NVMe drives (those are the little fast SSDs that screw down flat).</li>
+          <li>Onboard <strong>Wi-Fi</strong> or will I add a card / use ethernet?</li>
+        </ul>
+        <figure class="img-placeholder" role="img" aria-label="Image placeholder: motherboard with labels">
+          <p><strong>Image placeholder</strong> — a labeled board (CPU socket, RAM slots, M.2, etc.) is perfect here.</p>
+        </figure>
+        <p class="pc-tip"><strong>Tip:</strong> The little metal <strong>rear I/O shield</strong> that comes with
+          the board? It goes on the back of the case <em>before</em> you wiggle the motherboard in. If you forget,
+          you get to do the build twice. (Yes, I am speaking from the voice of experience.)</p>
+      </section>
+
+      <section class="pc-section" id="ram">
+        <h3>RAM (memory)</h3>
+        <p>
+          This is the computer’s <strong>short-term memory</strong>—the stuff you are using <em>right now</em>, like
+          browser tabs, the game, Discord, and whatever else is open. If you do not have enough RAM, the PC
+          starts dumping work to the drive instead, and everything feels like it is moving through mud.
+        </p>
+        <p>
+          A lot of people say <strong>16GB</strong> is a good starting point for a modern gaming PC, and
+          <strong>32GB</strong> if you leave a million tabs open, stream, or do creative work. You can get away
+          with 8GB for super light use, but I would not build a new gaming PC on 8GB today.
+        </p>
+        <h4>Speed and the “right kind”</h4>
+        <p>
+          RAM comes in <strong>generations</strong> (like DDR4 vs DDR5). The motherboard and CPU have to support
+          the one you buy—you cannot just mix and match willy-nilly. You will also see a speed number (MHz). Faster
+          can help a bit in some cases, but being “compatible and stable” matters more to me as a beginner than
+          squeezing out the last 2% on a chart I do not understand yet.
+        </p>
+        <p>
+          If you have more than one stick, <strong>dual channel</strong> (usually two matched sticks in the right
+          slots) can give a nice bump over a single stick. The motherboard manual shows which two slots to use first.
+        </p>
+        <p>
+          You might see <strong>XMP</strong> or <strong>EXPO</strong> in the BIOS—the short version is “your RAM
+          might run at its rated speed <em>after</em> you turn this profile on.” I was scared of the BIOS at first,
+          but it is mostly just menus. Take your time.
+        </p>
+        <figure class="img-placeholder" role="img" aria-label="Image placeholder: RAM sticks">
+          <p><strong>Image placeholder</strong> — a photo of two RAM modules, or a screenshot of a PCPartPicker
+            compatible RAM pick.</p>
+        </figure>
+        <p class="pc-tip"><strong>Tip:</strong> Buying one giant stick <em>feels</em> simple, but two matched sticks
+          is often the smarter move for the money if your board has four slots. Check the board manual for
+          “A2/B2” type guidance.</p>
+      </section>
+
+      <section class="pc-section" id="storage">
+        <h3>Storage (SSD, NVMe, HDD)</h3>
+        <p>
+          <strong>Storage</strong> is where your stuff lives when the PC is off—Windows, games, photos, that folder
+          of homework, all of it. <strong>RAM</strong> forgets when you shut down. <strong>Storage</strong> does not
+          (unless it dies, which is why backups exist—anyway, not trying to scare you, just being honest).
+        </p>
+        <h4>Types in plain language</h4>
+        <ul class="pc-inline-list">
+          <li><strong>HDD (hard drive)</strong> — Spinning disk. Cheap per gigabyte, fine for big cold storage,
+            slower. I still use one for “stuff I rarely touch.”</li>
+          <li><strong>SATA SSD</strong> — No moving parts, way faster than an HDD, connects with a cable to the
+            motherboard. A solid middle ground.</li>
+          <li><strong>NVMe (M.2)</strong> — The small stick that slots straight into the motherboard. Usually the
+            fastest and cleanest. Great for your main <strong>boot drive</strong> where Windows lives.</li>
+        </ul>
+        <p>
+          Size-wise, <strong>500GB to 1TB</strong> is a common place to start for the main drive if you play a few
+          big games. If you are the kind of person who installs everything “just in case,” plan for more. Games
+          got huge while we were not looking.
+        </p>
+        <figure class="img-placeholder" role="img" aria-label="Image placeholder: SSD and hard drive">
+          <p><strong>Image placeholder</strong> — compare an HDD vs a SATA SSD vs an NVMe stick side by side if you can.</p>
+        </figure>
+        <p class="pc-tip"><strong>Tip:</strong> If your budget is tight, a smaller NVMe for Windows + a big HDD
+          for game storage is a classic combo. I did that early on. Just know load times in games on the HDD
+          will be slower. Tradeoffs.</p>
+      </section>
+
+      <section class="pc-section" id="gpu">
+        <h3>GPU (graphics card)</h3>
+        <p>
+          If the CPU is the brain for general work, the <strong>GPU</strong> is the part that shoves pixels at your
+          monitor for games, 3D work, and a bunch of video stuff. A lot of game performance comes down to “how good
+          is this card,” especially at higher resolutions. Integrated graphics (GPU built into the CPU) can play
+          some lighter games, but a dedicated card is the usual move for a gaming build.
+        </p>
+        <h4>What I looked at</h4>
+        <ul class="pc-inline-list">
+          <li><strong>VRAM</strong> — Memory on the card itself. More helps at higher settings and resolution.
+            I kept seeing “8GB is a common sweet spot for 1080p” style advice, but it depends on the game and year.</li>
+          <li><strong>Length and thickness</strong> — Big cards exist. I measured my case and checked TechPowerUp
+            for the exact length so I was not doing cardboard surgery on my build day.</li>
+          <li><strong>Power connectors</strong> — Some want one 8-pin, some want two, some want three. The PSU
+            has to have the right cables (or you use what the manufacturer provides—don’t improvise with random cables).</li>
+        </ul>
+        <p>
+          Keep your <strong>graphics drivers</strong> updated in a normal way (NVIDIA / AMD’s official tools, or
+          Windows if you are on integrated). You do not have to update every single Tuesday, but if something
+          feels broken in a new game, drivers are a classic first “did you try this” step.
+        </p>
+        <figure class="img-placeholder" role="img" aria-label="Image placeholder: graphics card">
+          <p><strong>Image placeholder</strong> — a GPU in your hand or installed in a machine, to show the size.</p>
+        </figure>
+        <p class="pc-tip"><strong>Tip:</strong> The used GPU market is a whole emotional roller coaster. If you
+          buy used, ask yourself if the price still makes sense vs a newer entry-level card, and be careful of
+          cards that were run hard for mining 24/7. I am not saying “never”—I am saying “ask questions and Google
+          the seller if it feels off.”</p>
+      </section>
+
+      <section class="pc-section" id="psu">
+        <h3>PSU (power supply)</h3>
+        <p>
+          This box converts wall power into something your PC can eat safely. It is the part people joke about
+          “don’t skimp on,” and honestly, that advice stuck with me. A bad or dying PSU can be annoying at best
+          and dangerous at worst. I was nervous picking one, so I read comments and cross-checked wattage
+          on PCPartPicker a lot.
+        </p>
+        <h4>Wattage</h4>
+        <p>
+          You want <strong>enough</strong> headroom so the PSU is not screaming at 100% all day. PCPartPicker shows
+          an estimated wattage; I personally liked having some buffer for upgrades (especially a beefier GPU later).
+        </p>
+        <h4>Ratings and cables</h4>
+        <p>
+          You will see <strong>80 Plus</strong> labels (Bronze, Gold, etc.)—that is mostly about <em>efficiency</em>,
+          not a guarantee the unit is perfect, but it is a starting point when you are lost in a list. Modularity
+          is about the cables: <strong>non-modular</strong> = all cables attached, <strong>semi-modular</strong> = common
+          stuff fixed, <strong>fully modular</strong> = you plug in only what you need. Cleaner builds like modular
+          for cable management, but you pay a bit more.
+        </p>
+        <figure class="img-placeholder" role="img" aria-label="Image placeholder: power supply unit">
+          <p><strong>Image placeholder</strong> — the PSU in the case, or a photo of the label with wattage visible.</p>
+        </figure>
+        <p class="pc-tip"><strong>Tip:</strong> If a deal looks too good to be true for a “750W 80+ Gold” from a
+          name I never heard of, I slow down and read actual reviews. There are decent budget units, but “random
+          fire hazard” is not the aesthetic we want for the dorm desk.</p>
+      </section>
+
+      <section class="pc-section" id="case">
+        <h3>Case (the chassis)</h3>
+        <p>
+          It holds the parts, but it is not just a box for aesthetics. <strong>Airflow</strong> (can air actually
+          move through?) and <strong>room to build</strong> (can my hands fit without swearing for three hours?) were
+          bigger deals than RGB for me, personally. I like a clean look, but I like not thermal-throttling more.
+        </p>
+        <p>
+          Check: motherboard size support, <strong>GPU max length</strong>, <strong>CPU cooler height</strong>, how many
+          fan spots there are, and where dust filters live. A lot of that is on the manufacturer’s product page.
+        </p>
+        <figure class="img-placeholder" role="img" aria-label="Image placeholder: PC case">
+          <p><strong>Image placeholder</strong> — your empty case, or a side view with panels off.</p>
+        </figure>
+        <p class="pc-tip"><strong>Tip:</strong> Building in a very small <strong>ITX</strong> case looks cool in
+          videos, but for a first build, a slightly roomier case saved my sanity. You can still make it look nice
+          with cable ties and a little patience.</p>
+      </section>
+
+      <section class="pc-section" id="cooling">
+        <h3>Cooling and fans</h3>
+        <p>
+          Parts get hot. If they get <em>too</em> hot, the PC slows down on purpose to protect itself (throttling)
+          or, in a worst case, bad things happen. So you need a plan: usually a <strong>CPU cooler</strong> (the
+          metal tower or little AIO water block) and a few <strong>case fans</strong> to move air in and out.
+        </p>
+        <h4>Air vs AIO (water-style cooler)</h4>
+        <p>
+          Big air coolers are simple and reliable. AIOs can look super clean in a case with a window, but you have
+          to think about <strong>radiator size</strong> and where it mounts. I am not an expert on custom loops—
+          this is still “first build” level talk.
+        </p>
+        <h4>Airflow without overthinking it</h4>
+        <p>
+          A simple idea that helped me: you generally want a path for air—often <strong>front / bottom in</strong> and
+          <strong>top / back out</strong>—and you try not to block everything with a carpet or a wall. Your exact
+          fan count depends on the case, but you do not have to be a fluid dynamics professor on day one.
+        </p>
+        <figure class="img-placeholder" role="img" aria-label="Image placeholder: fans and CPU cooler">
+          <p><strong>Image placeholder</strong> — your fan layout, or a close-up of the CPU cooler.</p>
+        </figure>
+        <p class="pc-tip"><strong>Tip:</strong> Dust happens. I try to look at the front filter once in a while.
+          Sounds silly, but a clogged front panel made my old machine run louder than it needed to.</p>
+      </section>
+
+      <section class="pc-section" id="extras">
+        <h3>Small extras worth knowing (not glamorous, but real)</h3>
+        <ul class="pc-inline-list">
+          <li><strong>Thermal paste</strong> — A small pea or line depending what the cooler says. More paste is
+            <em>not</em> better. There are a million YouTube takes; pick one method and don’t stress forever.</li>
+          <li><strong>Static electricity</strong> — Touch something metal in the room before poking the motherboard
+            if you are nervous. I am not a scientist; I am just a person who does not want to zap a pricy component.</li>
+          <li><strong>Cable management</strong> — Takes time, makes upgrades easier, and can help airflow a little.
+            Zip ties are your friend. Don’t cut yourself on the case edges—some of those sheet metal bits are sharp.</li>
+          <li><strong>Monitor and cables</strong> — Your GPU has specific ports; your monitor needs a matching cable
+            (DisplayPort and HDMI are common). Make sure you plug the monitor into the <strong>GPU</strong>, not
+            only the motherboard, if you have a dedicated card—classic first-boot confusion.</li>
+        </ul>
+        <p>
+          If you are shopping part by part, I still think keeping a <strong>PCPartPicker list</strong> updated is
+          one of the best habits. When someone asks you “what are your specs?”, you can actually answer without digging
+          through order emails. Ask me how I know.
+        </p>
+        <p>
+          You already made it to the end of this long page, so you are doing better than “I will figure it out
+          never.” If something here sounds wrong a year from now, that is okay—tech moves fast, and the goal is
+          to feel <em>less</em> lost, not to memorize Wikipedia. Good luck with your list, and have fun with the
+          build (and maybe a snack break in the middle).
+        </p>
+        <p>
+          <a href="index.html" class="button">Back to home</a>
+        </p>
+      </section>
     </section>
   </main>
-
-  <p class="draft-placeholder">More information will be added in the next draft…</p>
 
   <footer class="site-footer">
     <p class="footer-copy">&copy; 2026 Tejas' Tech Journey</p>
