@@ -110,29 +110,40 @@ body > header {
 
 .site-title h1 {
   margin: 0;
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.4rem, 3vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* Site title: two links (enable / disable #darkmode); only one shown at a time */
 .site-title h1 a.site-title-label {
+  display: inline-block;
   text-decoration: none;
   color: inherit;
   cursor: default;
+  text-shadow:
+    1px 1px 0 var(--color-bg),
+    2px 2px 0 var(--color-border),
+    3px 3px 0 var(--color-bg),
+    4px 4px 0 var(--color-border),
+    5px 5px 0 var(--color-bg),
+    6px 6px 0 var(--color-border),
+    7px 7px 0 var(--color-bg);
+  -webkit-text-stroke: 1px var(--color-border);
 }
 
-.site-title-to-light {
+.site-title h1 a.site-title-to-light {
   display: none;
 }
 
-body:has(#darkmode:target) .site-title-to-dark {
+body:has(#darkmode:target) .site-title h1 a.site-title-to-dark {
   display: none;
 }
 
-body:has(#darkmode:target) .site-title-to-light {
-  display: inline;
+body:has(#darkmode:target) .site-title h1 a.site-title-to-light {
+  display: inline-block;
 }
 
 .site-title-label:focus-visible {
@@ -391,7 +402,6 @@ body:has(#darkmode:target) .hero-text .button.hero-read-dark {
 .card-wrap {
   display: grid;
   min-width: 0;
-  align-self: start;
   width: 100%;
 }
 
@@ -431,6 +441,8 @@ body:has(#darkmode:target) .hero-text .button.hero-read-dark {
   padding: 0.65rem 0.75rem 0.75rem;
   border: 2px solid var(--color-border);
   background-color: var(--color-bg-subtle);
+  border-radius: 1rem;
+  box-shadow: 0 3px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
 /* After .card so display wins; higher specificity so dark link stays hidden in light mode */
@@ -453,6 +465,7 @@ body:has(#darkmode:target) .card.card-link-dark {
   object-fit: cover;
   background-color: var(--color-placeholder);
   border: 1px solid var(--color-muted-border);
+  border-radius: 1rem;
 }
 
 /* Reserved height for image captions so titles still line up; kept modest to limit empty space */
@@ -494,7 +507,7 @@ body:has(#darkmode:target) .card.card-link-dark {
   .cards {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.1rem;
-    align-items: start;
+    align-items: stretch;
   }
 }
 

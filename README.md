@@ -30,6 +30,13 @@ This project was created to:
 
 To view the project on your machine, open `index.html` in a web browser.
 
+## Recent Updates
+
+- Homepage cards now use uniform heights on desktop for a cleaner, more organized layout.
+- Card visuals were refined with softer corners and subtle shadows for a more polished look.
+- The main site title was redesigned with a layered shadow style while keeping the existing light/dark color theme.
+- Added real images across the PC Basics page (CPU, motherboard, RAM, storage, GPU, PSU, chassis, airflow) with source credits where required.
+
 ## Author
 
 Created by Tejas Ghodke.
